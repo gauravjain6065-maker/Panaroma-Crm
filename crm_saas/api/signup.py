@@ -99,7 +99,7 @@ def request_trial(company_name: str, email: str, plan: str, slug: str) -> dict:
 			queue="default",
 			timeout=600,
 			is_async=True,
-			job_name=job.name
+			provisioning_job_name=job.name
 		)
 
 		# 11. Return proper JSON success response
