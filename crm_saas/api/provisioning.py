@@ -13,6 +13,12 @@ from frappe import _
 def get_logger():
 	return frappe.logger("crm_saas")
 
+def get_sites_path() -> str:
+	"""
+	Get the absolute path to the sites directory relative to the bench path.
+	"""
+	return os.path.join(frappe.utils.get_bench_path(), "sites")
+
 def run_bench_command(args: list) -> str:
 	"""
 	Helper function to run bench subcommands dynamically.
@@ -20,7 +26,7 @@ def run_bench_command(args: list) -> str:
 	to the sites folder to ensure apps.txt and configuration are found.
 	"""
 	logger = get_logger()
-	sites_path = frappe.utils.get_sites_path()
+	sites_path = get_sites_path()
 	python_bin = sys.executable
 	
 	# Execute bench command using bench_helper entry point
@@ -72,7 +78,7 @@ def provision_tenant(provisioning_job_name: str):
 		# 1. Fetch DB Root Password dynamically
 		db_root_password = frappe.conf.get("db_root_password")
 		if not db_root_password:
-			sites_path = frappe.utils.get_sites_path()
+			sites_path = get_sites_path()
 			common_config_path = os.path.join(sites_path, "common_site_config.json")
 			if os.path.exists(common_config_path):
 				with open(common_config_path, "r") as f:
@@ -94,7 +100,7 @@ def provision_tenant(provisioning_job_name: str):
 		])
 
 		# Extract database name dynamically from the newly created site's config
-		site_config_path = os.path.join(frappe.utils.get_sites_path(), site_name, "site_config.json")
+		site_config_path = os.path.join(get_sites_path(), site_name, "site_config.json")
 		db_name = ""
 		if os.path.exists(site_config_path):
 			with open(site_config_path, "r") as f:
