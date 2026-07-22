@@ -28,11 +28,11 @@
    "reqd": 1
   },
   {
-   "default": "Pending",
+   "default": "Requested",
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Pending\nRunning\nSuccess\nFailed",
+   "options": "Requested\nPending\nRunning\nSuccess\nFailed",
    "reqd": 1
   },
   {
