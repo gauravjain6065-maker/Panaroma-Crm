@@ -32,6 +32,14 @@ def run_bench_command(args: list) -> str:
 	# Execute bench command using bench_helper entry point
 	cmd = [python_bin, "-m", "frappe.utils.bench_helper", "frappe"] + args
 	
+	# Log the raw command list to identify None values easily
+	logger.info(f"Command list raw: {cmd}")
+	
+	# Check for NoneType elements inside the command arguments list
+	for i, element in enumerate(cmd):
+		if element is None:
+			raise TypeError(f"Command contains a NoneType element at index {i}: {cmd}")
+			
 	logger.info(f"Executing: {' '.join(cmd)}")
 	
 	result = subprocess.run(
@@ -71,6 +79,16 @@ def provision_tenant(provisioning_job_name: str):
 
 	tenant = frappe.get_doc("CRM Tenant", job.tenant)
 	site_name = tenant.site_name
+
+	# Dynamically heal site_name if it is missing or None (e.g. from manual/legacy entries)
+	if not site_name:
+		from crm_saas.utils.helpers import generate_site_name
+		slug = tenant.slug or tenant.name
+		site_name = generate_site_name(slug)
+		tenant.site_name = site_name
+		tenant.save(ignore_permissions=True)
+		frappe.db.commit()
+		logger.info(f"Healed missing site_name for tenant '{tenant.name}' to '{site_name}'.")
 
 	logger.info(f"Starting provisioning for site '{site_name}' under job '{provisioning_job_name}'.")
 
