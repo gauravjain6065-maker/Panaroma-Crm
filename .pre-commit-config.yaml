@@ -8,7 +8,7 @@ repos:
     rev: v5.0.0
     hooks:
       - id: trailing-whitespace
-        files: "panorama_crm.*"
+        files: "crm_saas.*"
         exclude: ".*json$|.*txt$|.*csv|.*md|.*svg"
       - id: check-merge-conflict
       - id: check-ast
@@ -38,11 +38,11 @@ repos:
         # Ignore any files that might contain jinja / bundles
         exclude: |
             (?x)^(
-                panorama_crm/public/dist/.*|
+                crm_saas/public/dist/.*|
                 .*node_modules.*|
                 .*boilerplate.*|
-                panorama_crm/templates/includes/.*|
-                panorama_crm/public/js/lib/.*
+                crm_saas/templates/includes/.*|
+                crm_saas/public/js/lib/.*
             )$
 
 
@@ -55,12 +55,12 @@ repos:
         # Ignore any files that might contain jinja / bundles
         exclude: |
             (?x)^(
-                panorama_crm/public/dist/.*|
+                crm_saas/public/dist/.*|
                 cypress/.*|
                 .*node_modules.*|
                 .*boilerplate.*|
-                panorama_crm/templates/includes/.*|
-                panorama_crm/public/js/lib/.*
+                crm_saas/templates/includes/.*|
+                crm_saas/public/js/lib/.*
             )$
 
 ci:

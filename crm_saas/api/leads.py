@@ -1,6 +1,6 @@
 import frappe
 from frappe import _
-from panorama_crm.panorama_crm.utils.normalize import normalize_email, normalize_phone
+from crm_saas.crm_saas.utils.normalize import normalize_email, normalize_phone
 
 
 @frappe.whitelist()

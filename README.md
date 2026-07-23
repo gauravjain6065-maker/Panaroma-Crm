@@ -9,7 +9,7 @@ You can install this app using the [bench](https://github.com/frappe/bench) CLI:
 ```bash
 cd $PATH_TO_YOUR_BENCH
 bench get-app $URL_OF_THIS_REPO --branch develop
-bench install-app panorama_crm
+bench install-app crm_saas
 ```
 
 ### Contributing
@@ -17,7 +17,7 @@ bench install-app panorama_crm
 This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
 
 ```bash
-cd apps/panorama_crm
+cd apps/crm_saas
 pre-commit install
 ```
 

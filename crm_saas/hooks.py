@@ -1,4 +1,4 @@
-app_name = "panorama_crm"
+app_name = "crm_saas"
 app_title = "Panorama CRM"
 app_publisher = "Yash Dubey"
 app_description = "CRM"
@@ -13,11 +13,11 @@ app_license = "mit"
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
 # 	{
-# 		"name": "panorama_crm",
-# 		"logo": "/assets/panorama_crm/logo.png",
+# 		"name": "crm_saas",
+# 		"logo": "/assets/crm_saas/logo.png",
 # 		"title": "Panorama CRM",
-# 		"route": "/panorama_crm",
-# 		"has_permission": "panorama_crm.api.permission.has_app_permission"
+# 		"route": "/crm_saas",
+# 		"has_permission": "crm_saas.api.permission.has_app_permission"
 # 	}
 # ]
 
@@ -25,15 +25,15 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/panorama_crm/css/panorama_crm.css"
-# app_include_js = "/assets/panorama_crm/js/panorama_crm.js"
+# app_include_css = "/assets/crm_saas/css/crm_saas.css"
+# app_include_js = "/assets/crm_saas/js/crm_saas.js"
 
 # include js, css files in header of web template
-# web_include_css = "/assets/panorama_crm/css/panorama_crm.css"
-# web_include_js = "/assets/panorama_crm/js/panorama_crm.js"
+# web_include_css = "/assets/crm_saas/css/crm_saas.css"
+# web_include_js = "/assets/crm_saas/js/crm_saas.js"
 
 # include custom scss in every website theme (without file extension ".scss")
-# website_theme_scss = "panorama_crm/public/scss/website"
+# website_theme_scss = "crm_saas/public/scss/website"
 
 # include js, css files in header of web form
 # webform_include_js = {"doctype": "public/js/doctype.js"}
@@ -51,7 +51,7 @@ app_license = "mit"
 # Svg Icons
 # ------------------
 # include app icons in desk
-# app_include_icons = "panorama_crm/public/icons.svg"
+# app_include_icons = "crm_saas/public/icons.svg"
 
 # Home Pages
 # ----------
@@ -75,43 +75,43 @@ app_license = "mit"
 
 # add methods and filters to jinja environment
 # jinja = {
-# 	"methods": "panorama_crm.utils.jinja_methods",
-# 	"filters": "panorama_crm.utils.jinja_filters"
+# 	"methods": "crm_saas.utils.jinja_methods",
+# 	"filters": "crm_saas.utils.jinja_filters"
 # }
 
 # Installation
 # ------------
 
-# before_install = "panorama_crm.install.before_install"
-# after_install = "panorama_crm.install.after_install"
+# before_install = "crm_saas.install.before_install"
+# after_install = "crm_saas.install.after_install"
 
 # Uninstallation
 # ------------
 
-# before_uninstall = "panorama_crm.uninstall.before_uninstall"
-# after_uninstall = "panorama_crm.uninstall.after_uninstall"
+# before_uninstall = "crm_saas.uninstall.before_uninstall"
+# after_uninstall = "crm_saas.uninstall.after_uninstall"
 
 # Integration Setup
 # ------------------
 # To set up dependencies/integrations with other apps
 # Name of the app being installed is passed as an argument
 
-# before_app_install = "panorama_crm.utils.before_app_install"
-# after_app_install = "panorama_crm.utils.after_app_install"
+# before_app_install = "crm_saas.utils.before_app_install"
+# after_app_install = "crm_saas.utils.after_app_install"
 
 # Integration Cleanup
 # -------------------
 # To clean up dependencies/integrations with other apps
 # Name of the app being uninstalled is passed as an argument
 
-# before_app_uninstall = "panorama_crm.utils.before_app_uninstall"
-# after_app_uninstall = "panorama_crm.utils.after_app_uninstall"
+# before_app_uninstall = "crm_saas.utils.before_app_uninstall"
+# after_app_uninstall = "crm_saas.utils.after_app_uninstall"
 
 # Desk Notifications
 # ------------------
 # See frappe.core.notifications.get_notification_config
 
-# notification_config = "panorama_crm.notifications.get_notification_config"
+# notification_config = "crm_saas.notifications.get_notification_config"
 
 # Permissions
 # -----------
@@ -150,39 +150,39 @@ app_license = "mit"
 
 # scheduler_events = {
 # 	"all": [
-# 		"panorama_crm.tasks.all"
+# 		"crm_saas.tasks.all"
 # 	],
 # 	"daily": [
-# 		"panorama_crm.tasks.daily"
+# 		"crm_saas.tasks.daily"
 # 	],
 # 	"hourly": [
-# 		"panorama_crm.tasks.hourly"
+# 		"crm_saas.tasks.hourly"
 # 	],
 # 	"weekly": [
-# 		"panorama_crm.tasks.weekly"
+# 		"crm_saas.tasks.weekly"
 # 	],
 # 	"monthly": [
-# 		"panorama_crm.tasks.monthly"
+# 		"crm_saas.tasks.monthly"
 # 	],
 # }
 
 # Testing
 # -------
 
-# before_tests = "panorama_crm.install.before_tests"
+# before_tests = "crm_saas.install.before_tests"
 
 # Overriding Methods
 # ------------------------------
 #
 # override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "panorama_crm.event.get_events"
+# 	"frappe.desk.doctype.event.event.get_events": "crm_saas.event.get_events"
 # }
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
 # override_doctype_dashboards = {
-# 	"Task": "panorama_crm.task.get_dashboard_data"
+# 	"Task": "crm_saas.task.get_dashboard_data"
 # }
 
 # exempt linked doctypes from being automatically cancelled
@@ -196,13 +196,13 @@ app_license = "mit"
 
 # Request Events
 # ----------------
-# before_request = ["panorama_crm.utils.before_request"]
-# after_request = ["panorama_crm.utils.after_request"]
+# before_request = ["crm_saas.utils.before_request"]
+# after_request = ["crm_saas.utils.after_request"]
 
 # Job Events
 # ----------
-# before_job = ["panorama_crm.utils.before_job"]
-# after_job = ["panorama_crm.utils.after_job"]
+# before_job = ["crm_saas.utils.before_job"]
+# after_job = ["crm_saas.utils.after_job"]
 
 # User Data Protection
 # --------------------
@@ -232,7 +232,7 @@ app_license = "mit"
 # --------------------------------
 
 # auth_hooks = [
-# 	"panorama_crm.auth.validate"
+# 	"crm_saas.auth.validate"
 # ]
 
 # Automatically update python controller files with type annotations for this app.

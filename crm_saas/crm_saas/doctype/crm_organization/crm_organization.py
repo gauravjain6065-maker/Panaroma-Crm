@@ -1,6 +1,6 @@
 import frappe
 from frappe.model.document import Document
-from panorama_crm.panorama_crm.utils.normalize import normalize_email, normalize_phone
+from crm_saas.crm_saas.utils.normalize import normalize_email, normalize_phone
 
 
 class CRMOrganization(Document):
