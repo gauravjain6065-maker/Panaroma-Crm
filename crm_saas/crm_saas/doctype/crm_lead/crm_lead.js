@@ -1,0 +1,8 @@
+// Copyright (c) 2026, Yash Dubey and contributors
+// For license information, please see license.txt
+
+// frappe.ui.form.on("CRM Lead", {
+// 	refresh(frm) {
+
+// 	},
+// });

@@ -1,0 +1,143 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-07-21 19:57:55.918511",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "first_name",
+  "last_name",
+  "full_name",
+  "email_id",
+  "phone",
+  "mobile_no",
+  "designation",
+  "department",
+  "organization",
+  "contact_owner",
+  "is_primary_contact",
+  "source",
+  "linked_lead",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "first_name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "last_name"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "full_name"
+  },
+  {
+   "fieldname": "email_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "email_id",
+   "reqd": 1
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "phone"
+  },
+  {
+   "fieldname": "mobile_no",
+   "fieldtype": "Data",
+   "label": "mobile_no"
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "label": "designation"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "label": "department"
+  },
+  {
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "label": "organization",
+   "options": "CRM Organization"
+  },
+  {
+   "fieldname": "contact_owner",
+   "fieldtype": "Link",
+   "label": "contact_owner",
+   "options": "User"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_primary_contact",
+   "fieldtype": "Check",
+   "label": "is_primary_contact"
+  },
+  {
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "label": "source",
+   "options": "referral\nWebsite\ncold call\nEvent\nother"
+  },
+  {
+   "fieldname": "linked_lead",
+   "fieldtype": "Link",
+   "label": "linked_lead",
+   "options": "CRM Lead"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "status",
+   "options": "Active\ninactive\nDo not contact"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-07-22 16:19:31.325213",
+ "modified_by": "Administrator",
+ "module": "crm_saas",
+ "name": "CRM Contact",
+ "owner": "yashdubeyzeronine@gmail.com",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

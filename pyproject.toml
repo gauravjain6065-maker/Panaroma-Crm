@@ -1,9 +1,9 @@
 [project]
 name = "crm_saas"
 authors = [
-    { name = "Interns", email = "gauravjain6065@gmail.com"}
+    { name = "Yash Dubey", email = "yashdubeyzeronine@gmail.com"}
 ]
-description = "Customer relationship"
+description = "CRM"
 requires-python = ">=3.10"
 readme = "README.md"
 dynamic = ["version"]
