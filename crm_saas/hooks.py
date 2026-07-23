@@ -1,8 +1,8 @@
 app_name = "crm_saas"
-app_title = "Project"
-app_publisher = "Interns"
-app_description = "Customer relationship"
-app_email = "gauravjain6065@gmail.com"
+app_title = "Panorama CRM"
+app_publisher = "Yash Dubey"
+app_description = "CRM"
+app_email = "yashdubeyzeronine@gmail.com"
 app_license = "mit"
 
 # Apps
@@ -15,7 +15,7 @@ app_license = "mit"
 # 	{
 # 		"name": "crm_saas",
 # 		"logo": "/assets/crm_saas/logo.png",
-# 		"title": "Project",
+# 		"title": "Panorama CRM",
 # 		"route": "/crm_saas",
 # 		"has_permission": "crm_saas.api.permission.has_app_permission"
 # 	}
