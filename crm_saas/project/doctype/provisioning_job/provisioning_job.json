@@ -9,6 +9,10 @@
   "naming_series",
   "tenant",
   "status",
+  "current_step",
+  "attempt_count",
+  "safe_error_message",
+  "technical_error_log",
   "started_on",
   "completed_on",
   "traceback"
@@ -28,12 +32,33 @@
    "reqd": 1
   },
   {
-   "default": "Requested",
+   "default": "Queued",
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Requested\nPending\nRunning\nSuccess\nFailed",
+   "options": "Queued\nRunning\nCompleted\nFailed\nRetry Requested",
    "reqd": 1
+  },
+  {
+   "fieldname": "current_step",
+   "fieldtype": "Data",
+   "label": "Current Step"
+  },
+  {
+   "default": "0",
+   "fieldname": "attempt_count",
+   "fieldtype": "Int",
+   "label": "Attempt Count"
+  },
+  {
+   "fieldname": "safe_error_message",
+   "fieldtype": "Small Text",
+   "label": "Safe Error Message"
+  },
+  {
+   "fieldname": "technical_error_log",
+   "fieldtype": "Long Text",
+   "label": "Technical Error Log"
   },
   {
    "fieldname": "started_on",
@@ -48,12 +73,12 @@
   {
    "fieldname": "traceback",
    "fieldtype": "Long Text",
-   "label": "Traceback"
+   "label": "Traceback (Legacy)"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-07-22 23:50:00.000000",
+ "modified": "2026-07-24 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "Project",
  "name": "Provisioning Job",
