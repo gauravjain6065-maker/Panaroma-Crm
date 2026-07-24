@@ -1,62 +1,130 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:slug",
+ "autoname": "field:tenant_slug",
  "creation": "2026-07-22 23:50:00.000000",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "tenant_name",
+  "tenant_slug",
+  "admin_email",
+  "site_name",
+  "primary_domain",
+  "custom_domain",
+  "plan",
+  "status",
+  "region",
+  "bench_cluster",
+  "trial_ends_on",
+  "billing_customer_id",
+  "db_name",
   "company_name",
   "email",
-  "slug",
-  "site_name",
-  "status",
-  "db_name"
+  "slug"
  ],
  "fields": [
   {
-   "fieldname": "company_name",
+   "fieldname": "tenant_name",
    "fieldtype": "Data",
-   "label": "Company Name",
+   "label": "Tenant Name",
    "reqd": 1
   },
   {
-   "fieldname": "email",
+   "fieldname": "tenant_slug",
    "fieldtype": "Data",
-   "label": "Email",
-   "reqd": 1
-  },
-  {
-   "fieldname": "slug",
-   "fieldtype": "Data",
-   "label": "Slug",
+   "label": "Tenant Slug",
    "reqd": 1,
    "unique": 1
+  },
+  {
+   "fieldname": "admin_email",
+   "fieldtype": "Data",
+   "label": "Admin Email",
+   "reqd": 1
   },
   {
    "fieldname": "site_name",
    "fieldtype": "Data",
    "label": "Site Name",
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "primary_domain",
+   "fieldtype": "Data",
+   "label": "Primary Domain",
+   "reqd": 1
+  },
+  {
+   "fieldname": "custom_domain",
+   "fieldtype": "Data",
+   "label": "Custom Domain"
+  },
+  {
+   "fieldname": "plan",
+   "fieldtype": "Link",
+   "label": "Plan",
+   "options": "CRM Plan",
+   "reqd": 1
   },
   {
    "default": "Requested",
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Requested\nActive\nSuspended\nDeleted",
+   "options": "Requested\nProvisioning\nActive\nSuspended\nCancelled\nFailed",
    "reqd": 1
+  },
+  {
+   "default": "India",
+   "fieldname": "region",
+   "fieldtype": "Select",
+   "label": "Region",
+   "options": "India\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bench_cluster",
+   "fieldtype": "Link",
+   "label": "Bench Cluster",
+   "options": "Bench Cluster"
+  },
+  {
+   "fieldname": "trial_ends_on",
+   "fieldtype": "Date",
+   "label": "Trial Ends On"
+  },
+  {
+   "fieldname": "billing_customer_id",
+   "fieldtype": "Data",
+   "label": "Billing Customer ID"
   },
   {
    "fieldname": "db_name",
    "fieldtype": "Data",
    "label": "DB Name",
    "read_only": 1
+  },
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "label": "Company Name"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "label": "Slug"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-07-22 23:50:00.000000",
+ "modified": "2026-07-24 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "Project",
  "name": "CRM Tenant",

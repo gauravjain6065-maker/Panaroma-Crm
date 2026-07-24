@@ -73,7 +73,10 @@ def provision_tenant(provisioning_job_name: str):
 
 	job = frappe.get_doc("Provisioning Job", provisioning_job_name)
 	job.status = "Running"
+	if not job.attempt_count:
+		job.attempt_count = 1
 	job.started_on = frappe.utils.now_datetime()
+	job.current_step = "Starting Provisioning"
 	job.save(ignore_permissions=True)
 	frappe.db.commit()
 
@@ -83,7 +86,7 @@ def provision_tenant(provisioning_job_name: str):
 	# Dynamically heal site_name if it is missing or None (e.g. from manual/legacy entries)
 	if not site_name:
 		from crm_saas.utils.helpers import generate_site_name
-		slug = tenant.slug or tenant.name
+		slug = tenant.tenant_slug or tenant.slug or tenant.name
 		site_name = generate_site_name(slug)
 		tenant.site_name = site_name
 		tenant.save(ignore_permissions=True)
@@ -94,6 +97,10 @@ def provision_tenant(provisioning_job_name: str):
 
 	try:
 		# 1. Fetch DB Root Password dynamically
+		job.current_step = "Retrieving Credentials"
+		job.save(ignore_permissions=True)
+		frappe.db.commit()
+		
 		db_root_password = frappe.conf.get("db_root_password")
 		if not db_root_password:
 			sites_path = get_sites_path()
@@ -109,6 +116,10 @@ def provision_tenant(provisioning_job_name: str):
 		admin_password = "admin" # Default admin password for trials
 
 		# 2. Create the site (using --force to allow retrying clean site builds)
+		job.current_step = "Creating Tenant Site"
+		job.save(ignore_permissions=True)
+		frappe.db.commit()
+		
 		run_bench_command([
 			"new-site", site_name,
 			"--db-root-username", "root",
@@ -131,15 +142,27 @@ def provision_tenant(provisioning_job_name: str):
 		frappe.db.commit()
 
 		# 3. Install crm_saas app on the tenant site
+		job.current_step = "Installing CRM SaaS App"
+		job.save(ignore_permissions=True)
+		frappe.db.commit()
+		
 		run_bench_command(["--site", site_name, "install-app", "crm_saas"])
 
 		# 4. Migrate the tenant site
+		job.current_step = "Running Site Migrations"
+		job.save(ignore_permissions=True)
+		frappe.db.commit()
+		
 		run_bench_command(["--site", site_name, "migrate"])
 
 		# 5. Initialize administrator profile and seed welcome data safely via kwargs
+		job.current_step = "Initializing Tenant Admin Profile"
+		job.save(ignore_permissions=True)
+		frappe.db.commit()
+		
 		init_kwargs = repr({
-			"email": tenant.email,
-			"company_name": tenant.company_name
+			"email": tenant.admin_email or tenant.email,
+			"company_name": tenant.tenant_name or tenant.company_name
 		})
 		run_bench_command([
 			"--site", site_name,
@@ -148,7 +171,8 @@ def provision_tenant(provisioning_job_name: str):
 		])
 
 		# 6. Mark Job and Tenant as successful
-		job.status = "Success"
+		job.current_step = "Completed"
+		job.status = "Completed"
 		job.completed_on = frappe.utils.now_datetime()
 		job.save(ignore_permissions=True)
 
@@ -164,10 +188,17 @@ def provision_tenant(provisioning_job_name: str):
 		
 		job.status = "Failed"
 		job.completed_on = frappe.utils.now_datetime()
+		job.technical_error_log = tb
 		job.traceback = tb
+		
+		# Clean safe_error_message
+		safe_msg = str(e)
+		if any(err in safe_msg for err in ["Traceback", "pymysql", "ConnectionRefused", "ConnectionError"]):
+			safe_msg = "Database or network connection error. Please try again."
+		job.safe_error_message = safe_msg
 		job.save(ignore_permissions=True)
 
-		tenant.status = "Requested" # Revert to allow retry
+		tenant.status = "Failed"
 		tenant.save(ignore_permissions=True)
 		
 		frappe.db.commit()
@@ -218,11 +249,15 @@ def retry_provisioning(job_name: str) -> dict:
 			frappe.ValidationError
 		)
 
-	# Reset Job document fields
-	job.status = "Requested"
+	# Reset Job document fields and increment attempt_count
+	job.status = "Retry Requested"
+	job.attempt_count = (job.attempt_count or 0) + 1
+	job.safe_error_message = None
+	job.technical_error_log = None
 	job.traceback = None
 	job.started_on = None
 	job.completed_on = None
+	job.current_step = None
 	job.save(ignore_permissions=True)
 
 	# Ensure the Tenant status is reset to Requested

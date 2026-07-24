@@ -50,7 +50,7 @@ def request_trial(company_name: str, email: str, plan: str, slug: str) -> dict:
 		)
 
 	# 4. Check duplicate slug in CRM Tenant
-	if frappe.db.exists("CRM Tenant", {"slug": slug}):
+	if frappe.db.exists("CRM Tenant", {"tenant_slug": slug}):
 		frappe.throw(
 			_("Slug '{0}' is already taken. Please choose another slug.").format(slug),
 			frappe.ValidationError
@@ -68,11 +68,20 @@ def request_trial(company_name: str, email: str, plan: str, slug: str) -> dict:
 	try:
 		# 6. Create CRM Tenant
 		tenant = frappe.new_doc("CRM Tenant")
+		tenant.tenant_name = company_name
+		tenant.tenant_slug = slug
+		tenant.admin_email = email
+		tenant.site_name = generate_site_name(slug)
+		tenant.primary_domain = generate_site_name(slug)
+		tenant.plan = plan
+		tenant.status = "Requested"
+		tenant.region = "India"
+		
+		# Keep legacy fields for backward compatibility
 		tenant.company_name = company_name
 		tenant.email = email
 		tenant.slug = slug
-		tenant.site_name = generate_site_name(slug)
-		tenant.status = "Requested"
+		
 		tenant.insert(ignore_permissions=True)
 
 		# 7. Create CRM Subscription
@@ -80,6 +89,9 @@ def request_trial(company_name: str, email: str, plan: str, slug: str) -> dict:
 		subscription.tenant = tenant.name
 		subscription.plan = plan
 		subscription.status = "Trial"
+		subscription.seat_count = 1
+		subscription.billing_cycle = "Monthly"
+		subscription.next_billing_date = add_days(today(), 14)
 		subscription.start_date = today()
 		subscription.end_date = add_days(today(), 14) # Default 14-day trial
 		subscription.insert(ignore_permissions=True)
@@ -87,7 +99,7 @@ def request_trial(company_name: str, email: str, plan: str, slug: str) -> dict:
 		# 8. Create Provisioning Job
 		job = frappe.new_doc("Provisioning Job")
 		job.tenant = tenant.name
-		job.status = "Requested"
+		job.status = "Queued"
 		job.insert(ignore_permissions=True)
 
 		# 9. Commit database transaction to persist records
@@ -142,7 +154,7 @@ def check_slug(slug: str) -> dict:
 		}
 
 	# Check existence in database
-	if frappe.db.exists("CRM Tenant", {"slug": slug}):
+	if frappe.db.exists("CRM Tenant", {"tenant_slug": slug}):
 		return {
 			"available": False,
 			"message": _("Slug is already taken.")
