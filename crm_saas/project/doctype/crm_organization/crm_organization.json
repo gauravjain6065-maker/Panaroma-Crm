@@ -1,26 +1,22 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2026-07-23 20:33:32.289597",
+ "creation": "2026-07-24 17:59:00.000000",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "lead_name",
+  "organization_name",
   "email",
   "phone",
-  "organization_name"
+  "website",
+  "industry"
  ],
  "fields": [
   {
-   "fieldname": "phone",
-   "fieldtype": "Data",
-   "label": "Phone"
-  },
-  {
-   "fieldname": "lead_name",
+   "fieldname": "organization_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Lead Name",
+   "label": "Organization Name",
    "reqd": 1
   },
   {
@@ -29,18 +25,28 @@
    "label": "Email"
   },
   {
-   "fieldname": "organization_name",
+   "fieldname": "phone",
    "fieldtype": "Data",
-   "label": "Organization Name"
+   "label": "Phone"
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website"
+  },
+  {
+   "fieldname": "industry",
+   "fieldtype": "Data",
+   "label": "Industry"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-07-23 20:38:39.315231",
+ "modified": "2026-07-24 17:59:00.000000",
  "modified_by": "Administrator",
  "module": "Project",
- "name": "CRM Contact",
+ "name": "CRM Organization",
  "owner": "Administrator",
  "permissions": [
   {
@@ -52,6 +58,18 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
    "share": 1,
    "write": 1
   }
