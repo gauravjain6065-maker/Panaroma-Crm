@@ -1,11 +1,16 @@
 {
  "actions": [],
  "allow_rename": 1,
+<<<<<<< HEAD
  "creation": "2026-07-21 19:27:43.023489",
+=======
+ "creation": "2026-07-24 17:59:00.000000",
+>>>>>>> origin/develop
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "organization_name",
+<<<<<<< HEAD
   "website",
   "industry",
   "phone",
@@ -16,12 +21,19 @@
   "territory",
   "billing_address",
   "notes"
+=======
+  "email",
+  "phone",
+  "website",
+  "industry"
+>>>>>>> origin/develop
  ],
  "fields": [
   {
    "fieldname": "organization_name",
    "fieldtype": "Data",
    "in_list_view": 1,
+<<<<<<< HEAD
    "label": "organization_name",
    "reqd": 1
   },
@@ -79,16 +91,48 @@
    "fieldname": "notes",
    "fieldtype": "Text Editor",
    "label": "notes"
+=======
+   "label": "Organization Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone"
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website"
+  },
+  {
+   "fieldname": "industry",
+   "fieldtype": "Data",
+   "label": "Industry"
+>>>>>>> origin/develop
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
+<<<<<<< HEAD
  "modified": "2026-07-24 19:02:32.017085",
  "modified_by": "Administrator",
  "module": "Project",
  "name": "CRM Organization",
  "owner": "yashdubeyzeronine@gmail.com",
+=======
+ "modified": "2026-07-24 17:59:00.000000",
+ "modified_by": "Administrator",
+ "module": "Project",
+ "name": "CRM Organization",
+ "owner": "Administrator",
+>>>>>>> origin/develop
  "permissions": [
   {
    "create": 1,
@@ -106,6 +150,10 @@
    "create": 1,
    "email": 1,
    "export": 1,
+<<<<<<< HEAD
+=======
+   "if_owner": 1,
+>>>>>>> origin/develop
    "print": 1,
    "read": 1,
    "report": 1,
@@ -119,4 +167,8 @@
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/develop
