@@ -1,0 +1,146 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-07-21 19:44:39.991599",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "lead_name",
+  "email",
+  "phone",
+  "organization_name",
+  "designation",
+  "status",
+  "source",
+  "lead_owner",
+  "converted_organization",
+  "conversion_date",
+  "disqualification_reason",
+  "notes",
+  "next_followup_date",
+  "converted_contact"
+ ],
+ "fields": [
+  {
+   "fieldname": "lead_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "lead_name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "email",
+   "reqd": 1
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "phone"
+  },
+  {
+   "fieldname": "organization_name",
+   "fieldtype": "Data",
+   "label": "organization_name"
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "label": "designation"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "status",
+   "options": "New\nContacted\nQualified\nConverted"
+  },
+  {
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "label": "source",
+   "options": "Website\nRefrral\nCold call\nCampaign\nImport\nApi"
+  },
+  {
+   "fieldname": "lead_owner",
+   "fieldtype": "Link",
+   "label": "lead_owner",
+   "options": "User"
+  },
+  {
+   "fieldname": "converted_organization",
+   "fieldtype": "Link",
+   "label": "converted_organization",
+   "options": "CRM Organization",
+   "read_only": 1
+  },
+  {
+   "fieldname": "conversion_date",
+   "fieldtype": "Datetime",
+   "label": "conversion_date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "disqualification_reason",
+   "fieldtype": "Select",
+   "label": "disqualification_reason",
+   "options": "Wrong number\nNot interested\nInterested\nSpam\nDuplicate\nOthers"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text Editor",
+   "label": "notes"
+  },
+  {
+   "fieldname": "next_followup_date",
+   "fieldtype": "Date",
+   "label": "next_followup_date"
+  },
+  {
+   "fieldname": "converted_contact",
+   "fieldtype": "Link",
+   "label": "converted_contact",
+   "options": "CRM Contact",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-07-22 19:03:53.192749",
+ "modified_by": "Administrator",
+ "module": "Project",
+ "name": "CRM Lead",
+ "owner": "yashdubeyzeronine@gmail.com",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
