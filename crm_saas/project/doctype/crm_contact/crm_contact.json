@@ -2,6 +2,7 @@
  "actions": [],
  "allow_rename": 1,
 <<<<<<< HEAD
+<<<<<<< HEAD
  "creation": "2026-07-21 19:57:55.918511",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -102,6 +103,8 @@
    "label": "status",
    "options": "Active\ninactive\nDo not contact"
 =======
+=======
+>>>>>>> cbae17b2db5641c5d9d02e72f8f72044c1c68773
  "creation": "2026-07-23 20:33:32.289597",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -133,12 +136,16 @@
    "fieldname": "organization_name",
    "fieldtype": "Data",
    "label": "Organization Name"
+<<<<<<< HEAD
 >>>>>>> origin/develop
+=======
+>>>>>>> cbae17b2db5641c5d9d02e72f8f72044c1c68773
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
+<<<<<<< HEAD
 <<<<<<< HEAD
  "modified": "2026-07-24 19:02:46.923341",
  "modified_by": "Administrator",
@@ -146,12 +153,17 @@
  "name": "CRM Contact",
  "owner": "yashdubeyzeronine@gmail.com",
 =======
+=======
+>>>>>>> cbae17b2db5641c5d9d02e72f8f72044c1c68773
  "modified": "2026-07-23 20:38:39.315231",
  "modified_by": "Administrator",
  "module": "Project",
  "name": "CRM Contact",
  "owner": "Administrator",
+<<<<<<< HEAD
 >>>>>>> origin/develop
+=======
+>>>>>>> cbae17b2db5641c5d9d02e72f8f72044c1c68773
  "permissions": [
   {
    "create": 1,
@@ -164,6 +176,7 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+<<<<<<< HEAD
 <<<<<<< HEAD
   },
   {
@@ -178,6 +191,8 @@
    "write": 1
 =======
 >>>>>>> origin/develop
+=======
+>>>>>>> cbae17b2db5641c5d9d02e72f8f72044c1c68773
   }
  ],
  "row_format": "Dynamic",
