@@ -1,115 +1,47 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2026-07-21 19:57:55.918511",
+ "creation": "2026-07-23 20:33:32.289597",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "first_name",
-  "last_name",
-  "full_name",
-  "email_id",
+  "lead_name",
+  "email",
   "phone",
-  "mobile_no",
-  "designation",
-  "department",
-  "organization",
-  "contact_owner",
-  "is_primary_contact",
-  "source",
-  "linked_lead",
-  "status"
+  "organization_name"
  ],
  "fields": [
   {
-   "fieldname": "first_name",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "first_name",
-   "reqd": 1
-  },
-  {
-   "fieldname": "last_name",
-   "fieldtype": "Data",
-   "label": "last_name"
-  },
-  {
-   "fieldname": "full_name",
-   "fieldtype": "Data",
-   "label": "full_name"
-  },
-  {
-   "fieldname": "email_id",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "email_id",
-   "reqd": 1
-  },
-  {
    "fieldname": "phone",
    "fieldtype": "Data",
-   "label": "phone"
+   "label": "Phone"
   },
   {
-   "fieldname": "mobile_no",
+   "fieldname": "lead_name",
    "fieldtype": "Data",
-   "label": "mobile_no"
+   "in_list_view": 1,
+   "label": "Lead Name",
+   "reqd": 1
   },
   {
-   "fieldname": "designation",
+   "fieldname": "email",
    "fieldtype": "Data",
-   "label": "designation"
+   "label": "Email"
   },
   {
-   "fieldname": "department",
+   "fieldname": "organization_name",
    "fieldtype": "Data",
-   "label": "department"
-  },
-  {
-   "fieldname": "organization",
-   "fieldtype": "Link",
-   "label": "organization",
-   "options": "CRM Organization"
-  },
-  {
-   "fieldname": "contact_owner",
-   "fieldtype": "Link",
-   "label": "contact_owner",
-   "options": "User"
-  },
-  {
-   "default": "0",
-   "fieldname": "is_primary_contact",
-   "fieldtype": "Check",
-   "label": "is_primary_contact"
-  },
-  {
-   "fieldname": "source",
-   "fieldtype": "Select",
-   "label": "source",
-   "options": "referral\nWebsite\ncold call\nEvent\nother"
-  },
-  {
-   "fieldname": "linked_lead",
-   "fieldtype": "Link",
-   "label": "linked_lead",
-   "options": "CRM Lead"
-  },
-  {
-   "fieldname": "status",
-   "fieldtype": "Select",
-   "label": "status",
-   "options": "Active\ninactive\nDo not contact"
+   "label": "Organization Name"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-07-24 19:02:46.923341",
+ "modified": "2026-07-23 20:38:39.315231",
  "modified_by": "Administrator",
  "module": "Project",
  "name": "CRM Contact",
- "owner": "yashdubeyzeronine@gmail.com",
+ "owner": "Administrator",
  "permissions": [
   {
    "create": 1,
@@ -120,17 +52,6 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Sales User",
    "share": 1,
    "write": 1
   }
