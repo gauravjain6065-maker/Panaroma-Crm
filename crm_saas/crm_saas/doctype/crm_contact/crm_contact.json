@@ -1,8 +1,6 @@
 {
  "actions": [],
  "allow_rename": 1,
-<<<<<<< HEAD
-<<<<<<< HEAD
  "creation": "2026-07-21 19:57:55.918511",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -27,143 +25,91 @@
    "fieldname": "first_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "first_name",
+   "label": "First Name",
    "reqd": 1
   },
   {
    "fieldname": "last_name",
    "fieldtype": "Data",
-   "label": "last_name"
+   "label": "Last Name"
   },
   {
    "fieldname": "full_name",
    "fieldtype": "Data",
-   "label": "full_name"
+   "label": "Full Name"
   },
   {
    "fieldname": "email_id",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "email_id",
+   "label": "Email ID",
    "reqd": 1
   },
-  {
-   "fieldname": "phone",
-   "fieldtype": "Data",
-   "label": "phone"
-  },
-  {
-   "fieldname": "mobile_no",
-   "fieldtype": "Data",
-   "label": "mobile_no"
-  },
-  {
-   "fieldname": "designation",
-   "fieldtype": "Data",
-   "label": "designation"
-  },
-  {
-   "fieldname": "department",
-   "fieldtype": "Data",
-   "label": "department"
-  },
-  {
-   "fieldname": "organization",
-   "fieldtype": "Link",
-   "label": "organization",
-   "options": "CRM Organization"
-  },
-  {
-   "fieldname": "contact_owner",
-   "fieldtype": "Link",
-   "label": "contact_owner",
-   "options": "User"
-  },
-  {
-   "default": "0",
-   "fieldname": "is_primary_contact",
-   "fieldtype": "Check",
-   "label": "is_primary_contact"
-  },
-  {
-   "fieldname": "source",
-   "fieldtype": "Select",
-   "label": "source",
-   "options": "referral\nWebsite\ncold call\nEvent\nother"
-  },
-  {
-   "fieldname": "linked_lead",
-   "fieldtype": "Link",
-   "label": "linked_lead",
-   "options": "CRM Lead"
-  },
-  {
-   "fieldname": "status",
-   "fieldtype": "Select",
-   "label": "status",
-   "options": "Active\ninactive\nDo not contact"
-=======
-=======
->>>>>>> cbae17b2db5641c5d9d02e72f8f72044c1c68773
- "creation": "2026-07-23 20:33:32.289597",
- "doctype": "DocType",
- "engine": "InnoDB",
- "field_order": [
-  "lead_name",
-  "email",
-  "phone",
-  "organization_name"
- ],
- "fields": [
   {
    "fieldname": "phone",
    "fieldtype": "Data",
    "label": "Phone"
   },
   {
-   "fieldname": "lead_name",
+   "fieldname": "mobile_no",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Lead Name",
-   "reqd": 1
+   "label": "Mobile No"
   },
   {
-   "fieldname": "email",
+   "fieldname": "designation",
    "fieldtype": "Data",
-   "label": "Email"
+   "label": "Designation"
   },
   {
-   "fieldname": "organization_name",
+   "fieldname": "department",
    "fieldtype": "Data",
-   "label": "Organization Name"
-<<<<<<< HEAD
->>>>>>> origin/develop
-=======
->>>>>>> cbae17b2db5641c5d9d02e72f8f72044c1c68773
+   "label": "Department"
+  },
+  {
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "label": "Organization",
+   "options": "CRM Organization"
+  },
+  {
+   "fieldname": "contact_owner",
+   "fieldtype": "Link",
+   "label": "Contact Owner",
+   "options": "User"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_primary_contact",
+   "fieldtype": "Check",
+   "label": "Is Primary Contact"
+  },
+  {
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "label": "Source",
+   "options": "referral\nWebsite\ncold call\nEvent\nother"
+  },
+  {
+   "fieldname": "linked_lead",
+   "fieldtype": "Link",
+   "label": "Linked Lead",
+   "options": "CRM Lead"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Active\ninactive\nDo not contact"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
-<<<<<<< HEAD
-<<<<<<< HEAD
  "modified": "2026-07-24 19:02:46.923341",
  "modified_by": "Administrator",
- "module": "Project",
- "name": "CRM Contact",
- "owner": "yashdubeyzeronine@gmail.com",
-=======
-=======
->>>>>>> cbae17b2db5641c5d9d02e72f8f72044c1c68773
- "modified": "2026-07-23 20:38:39.315231",
- "modified_by": "Administrator",
- "module": "Project",
+ "module": "crm_saas",
  "name": "CRM Contact",
  "owner": "Administrator",
-<<<<<<< HEAD
->>>>>>> origin/develop
-=======
->>>>>>> cbae17b2db5641c5d9d02e72f8f72044c1c68773
  "permissions": [
   {
    "create": 1,
@@ -176,8 +122,6 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
-<<<<<<< HEAD
-<<<<<<< HEAD
   },
   {
    "create": 1,
@@ -189,10 +133,6 @@
    "role": "Sales User",
    "share": 1,
    "write": 1
-=======
->>>>>>> origin/develop
-=======
->>>>>>> cbae17b2db5641c5d9d02e72f8f72044c1c68773
   }
  ],
  "row_format": "Dynamic",

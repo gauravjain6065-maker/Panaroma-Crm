@@ -47,7 +47,7 @@
  "links": [],
  "modified": "2026-07-19 13:28:35.776128",
  "modified_by": "Administrator",
- "module": "Project",
+ "module": "crm_saas",
  "name": "CRM Activity",
  "owner": "gauravjain6065@gmail.com",
  "permissions": [

@@ -53,7 +53,7 @@
  "links": [],
  "modified": "2026-07-19 13:35:05.200591",
  "modified_by": "Administrator",
- "module": "Project",
+ "module": "crm_saas",
  "name": "CRM Duplicate Candidate",
  "owner": "Administrator",
  "permissions": [

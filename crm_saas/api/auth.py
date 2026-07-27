@@ -1,8 +1,16 @@
 import frappe
-from frappe import _
-from crm_saas.utils.helpers import validate_email, validate_slug, normalize_company_name, generate_site_name
+from crm_saas.api.signup import request_trial
 
 @frappe.whitelist(allow_guest=True)
-def signup(company_name=None, email=None, password=None, plan="Trial", slug=None, **kwargs):
-    # We will write the validation and creation logic here next!
-    pass
+def signup(company_name=None, email=None, password=None, plan="Trial", slug=None, companyName=None, **kwargs):
+    """
+    Wrapper endpoint for signup that routes to request_trial.
+    """
+    return request_trial(
+        company_name=company_name or companyName,
+        email=email,
+        plan=plan,
+        slug=slug,
+        password=password,
+        **kwargs
+    )

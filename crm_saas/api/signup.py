@@ -4,6 +4,7 @@
 import frappe
 from frappe import _
 from frappe.utils import add_days, today
+from frappe.utils.password import update_password
 from crm_saas.utils.helpers import (
 	validate_email,
 	validate_slug,
@@ -12,12 +13,13 @@ from crm_saas.utils.helpers import (
 )
 
 @frappe.whitelist(allow_guest=True)
-def request_trial(company_name: str, email: str, plan: str, slug: str) -> dict:
+def request_trial(company_name: str = None, email: str = None, plan: str = "Trial", slug: str = None, password: str = None, companyName: str = None, **kwargs) -> dict:
 	"""
 	Whitelisted API endpoint to request a trial tenant.
 	Creates CRM Tenant, CRM Subscription, and Provisioning Job,
 	then enqueues the provisioning background worker.
 	"""
+	company_name = company_name or companyName or kwargs.get("company_name")
 	# 1. Validate required fields presence
 	if not all([company_name, email, plan, slug]):
 		frappe.throw(
@@ -56,6 +58,12 @@ def request_trial(company_name: str, email: str, plan: str, slug: str) -> dict:
 			frappe.ValidationError
 		)
 
+	if password and len(password) < 8:
+		frappe.throw(_("Password must be at least 8 characters long."), frappe.ValidationError)
+
+	if frappe.db.exists("User", email):
+		frappe.throw(_("User with email '{0}' already exists.").format(email), frappe.ValidationError)
+
 	# 5. Fetch and validate CRM Plan
 	if not frappe.db.exists("CRM Plan", plan):
 		frappe.throw(_("The requested CRM Plan '{0}' does not exist.").format(plan), frappe.ValidationError)
@@ -84,7 +92,30 @@ def request_trial(company_name: str, email: str, plan: str, slug: str) -> dict:
 		
 		tenant.insert(ignore_permissions=True)
 
-		# 7. Create CRM Subscription
+		# 7. Create Frappe User account if password is provided
+		if password:
+			if not frappe.db.exists("Role", "CRM Admin"):
+				role_doc = frappe.new_doc("Role")
+				role_doc.role_name = "CRM Admin"
+				role_doc.desk_access = 1
+				role_doc.insert(ignore_permissions=True)
+
+			user = frappe.new_doc("User")
+			user.email = email
+			user.first_name = company_name
+			user.send_welcome_email = 0
+			user.enabled = 1
+			user.user_type = "System User"
+			user.append("roles", {"role": "CRM Admin"})
+			user.insert(ignore_permissions=True)
+
+			# Securely update password in __Auth table
+			update_password(user.name, password)
+
+			# Link User to Tenant via User Permission
+			frappe.permissions.add_user_permission("CRM Tenant", tenant.name, user.name, ignore_permissions=True)
+
+		# 8. Create CRM Subscription
 		subscription = frappe.new_doc("CRM Subscription")
 		subscription.tenant = tenant.name
 		subscription.plan = plan
