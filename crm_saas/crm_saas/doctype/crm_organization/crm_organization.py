@@ -1,3 +1,6 @@
+# Copyright (c) 2026, Yash Dubey and contributors
+# For license information, please see license.txt
+
 import frappe
 from frappe.model.document import Document
 from crm_saas.crm_saas.utils.normalize import normalize_email, normalize_phone

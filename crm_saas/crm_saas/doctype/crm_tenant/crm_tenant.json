@@ -129,7 +129,7 @@
  "links": [],
  "modified": "2026-07-27 16:21:48.439736",
  "modified_by": "rajsonar083@gmail.com",
- "module": "Project",
+ "module": "crm_saas",
  "name": "CRM Tenant",
  "owner": "Administrator",
  "permissions": [

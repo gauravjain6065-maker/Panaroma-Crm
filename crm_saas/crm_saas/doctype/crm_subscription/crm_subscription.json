@@ -8,21 +8,21 @@
  "field_order": [
   "naming_series",
   "tenant",
+  "plan",
   "status",
-  "current_step",
-  "attempt_count",
-  "safe_error_message",
-  "technical_error_log",
-  "started_on",
-  "completed_on",
-  "traceback"
+  "seat_count",
+  "billing_cycle",
+  "gateway_subscription_id",
+  "next_billing_date",
+  "start_date",
+  "end_date"
  ],
  "fields": [
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "label": "Naming Series",
-   "options": "CRM-JOB-.YYYY.-.#####."
+   "options": "CRM-SUB-.YYYY.-.#####."
   },
   {
    "fieldname": "tenant",
@@ -32,56 +32,62 @@
    "reqd": 1
   },
   {
-   "default": "Queued",
-   "fieldname": "status",
-   "fieldtype": "Select",
-   "label": "Status",
-   "options": "Queued\nRunning\nCompleted\nFailed\nRetry Requested",
+   "fieldname": "plan",
+   "fieldtype": "Link",
+   "label": "Plan",
+   "options": "CRM Plan",
    "reqd": 1
   },
   {
-   "fieldname": "current_step",
-   "fieldtype": "Data",
-   "label": "Current Step"
+   "default": "Trial",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Trial\nActive\nPast Due\nSuspended\nCancelled",
+   "reqd": 1
   },
   {
-   "default": "0",
-   "fieldname": "attempt_count",
+   "fieldname": "seat_count",
    "fieldtype": "Int",
-   "label": "Attempt Count"
+   "label": "Seat Count",
+   "reqd": 1
   },
   {
-   "fieldname": "safe_error_message",
-   "fieldtype": "Small Text",
-   "label": "Safe Error Message"
+   "fieldname": "billing_cycle",
+   "fieldtype": "Select",
+   "label": "Billing Cycle",
+   "options": "Monthly\nYearly",
+   "reqd": 1
   },
   {
-   "fieldname": "technical_error_log",
-   "fieldtype": "Long Text",
-   "label": "Technical Error Log"
+   "fieldname": "gateway_subscription_id",
+   "fieldtype": "Data",
+   "label": "Gateway Subscription ID"
   },
   {
-   "fieldname": "started_on",
-   "fieldtype": "Datetime",
-   "label": "Started On"
+   "fieldname": "next_billing_date",
+   "fieldtype": "Date",
+   "label": "Next Billing Date"
   },
   {
-   "fieldname": "completed_on",
-   "fieldtype": "Datetime",
-   "label": "Completed On"
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date",
+   "reqd": 1
   },
   {
-   "fieldname": "traceback",
-   "fieldtype": "Long Text",
-   "label": "Traceback (Legacy)"
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
  "modified": "2026-07-24 12:00:00.000000",
  "modified_by": "Administrator",
- "module": "Project",
- "name": "Provisioning Job",
+ "module": "crm_saas",
+ "name": "CRM Subscription",
  "owner": "Administrator",
  "permissions": [
   {
