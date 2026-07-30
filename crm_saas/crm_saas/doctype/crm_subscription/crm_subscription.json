@@ -7,13 +7,10 @@
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
-  "tenant",
+  "user",
   "plan",
   "status",
-  "seat_count",
-  "billing_cycle",
-  "gateway_subscription_id",
-  "next_billing_date",
+  "is_trial",
   "start_date",
   "end_date"
  ],
@@ -25,10 +22,10 @@
    "options": "CRM-SUB-.YYYY.-.#####."
   },
   {
-   "fieldname": "tenant",
+   "fieldname": "user",
    "fieldtype": "Link",
-   "label": "Tenant",
-   "options": "CRM Tenant",
+   "label": "User",
+   "options": "User",
    "reqd": 1
   },
   {
@@ -43,31 +40,13 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Trial\nActive\nPast Due\nSuspended\nCancelled",
+   "options": "Trial\nActive\nExpired\nPast Due\nSuspended\nCancelled",
    "reqd": 1
   },
   {
-   "fieldname": "seat_count",
-   "fieldtype": "Int",
-   "label": "Seat Count",
-   "reqd": 1
-  },
-  {
-   "fieldname": "billing_cycle",
-   "fieldtype": "Select",
-   "label": "Billing Cycle",
-   "options": "Monthly\nYearly",
-   "reqd": 1
-  },
-  {
-   "fieldname": "gateway_subscription_id",
-   "fieldtype": "Data",
-   "label": "Gateway Subscription ID"
-  },
-  {
-   "fieldname": "next_billing_date",
-   "fieldtype": "Date",
-   "label": "Next Billing Date"
+   "fieldname": "is_trial",
+   "fieldtype": "Check",
+   "label": "Is Trial"
   },
   {
    "fieldname": "start_date",
@@ -84,7 +63,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-07-24 12:00:00.000000",
+ "modified": "2026-07-30 13:15:00.000000",
  "modified_by": "Administrator",
  "module": "crm_saas",
  "name": "CRM Subscription",
@@ -101,6 +80,13 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "read": 1,
+   "role": "CRM User",
+   "write": 0
   }
  ],
  "row_format": "Dynamic",

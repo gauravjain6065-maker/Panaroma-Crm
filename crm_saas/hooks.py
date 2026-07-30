@@ -117,13 +117,19 @@ app_license = "mit"
 # -----------
 # Permissions evaluated in scripted ways
 
-# permission_query_conditions = {
-# 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
-# }
-#
-# has_permission = {
-# 	"Event": "frappe.desk.doctype.event.event.has_permission",
-# }
+permission_query_conditions = {
+	"CRM Lead": "crm_saas.crm_saas.permissions.get_permission_query_conditions",
+	"CRM Contact": "crm_saas.crm_saas.permissions.get_permission_query_conditions",
+	"CRM Organization": "crm_saas.crm_saas.permissions.get_permission_query_conditions",
+	"CRM Activity": "crm_saas.crm_saas.permissions.get_permission_query_conditions",
+}
+
+has_permission = {
+	"CRM Lead": "crm_saas.crm_saas.permissions.has_permission",
+	"CRM Contact": "crm_saas.crm_saas.permissions.has_permission",
+	"CRM Organization": "crm_saas.crm_saas.permissions.has_permission",
+	"CRM Activity": "crm_saas.crm_saas.permissions.has_permission",
+}
 
 # DocType Class
 # ---------------
@@ -139,32 +145,18 @@ app_license = "mit"
 
 # doc_events = {
 # 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
+# 		"before_insert": "crm_saas.crm_saas.utils.permissions.set_crm_company"
 # 	}
 # }
 
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"crm_saas.tasks.all"
-# 	],
-# 	"daily": [
-# 		"crm_saas.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"crm_saas.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"crm_saas.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"crm_saas.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	"daily": [
+		"crm_saas.crm_saas.scheduler.daily_expire_subscriptions"
+	]
+}
 
 # Testing
 # -------
@@ -196,7 +188,7 @@ app_license = "mit"
 
 # Request Events
 # ----------------
-# before_request = ["crm_saas.utils.before_request"]
+before_request = ["crm_saas.crm_saas.permissions.before_request"]
 # after_request = ["crm_saas.utils.after_request"]
 
 # Job Events
@@ -237,6 +229,10 @@ app_license = "mit"
 
 # Automatically update python controller files with type annotations for this app.
 # export_python_type_annotations = True
+
+after_migrate = [
+	"crm_saas.create_trial_plan.execute"
+]
 
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
