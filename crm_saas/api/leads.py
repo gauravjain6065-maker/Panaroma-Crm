@@ -1,9 +1,11 @@
 import frappe
 from frappe import _
 from crm_saas.crm_saas.utils.normalize import normalize_email, normalize_phone
+from crm_saas.crm_saas.services.subscription_service import require_subscription
 
 
 @frappe.whitelist()
+@require_subscription
 def quick_create(lead_name, organization_name=None, email=None, phone=None,
                   source="Website", next_followup_date=None, create_followup_task=False):
 

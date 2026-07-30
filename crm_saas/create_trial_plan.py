@@ -3,21 +3,14 @@ import frappe
 def create_trial_plan():
     """
     Creates the 'Trial' CRM Plan if it doesn't already exist.
-    Also ensures sensible default values matching the CRM Plan doctype definition.
     """
     if not frappe.db.exists("CRM Plan", "Trial"):
         plan = frappe.get_doc({
             "doctype": "CRM Plan",
             "plan_name": "Trial",
             "monthly_price_per_user": 0.0,
-            "included_users": 5,
-            "max_users": 5,
-            "max_records": 1000,
-            "max_storage_mb": 500,
-            "support_level": "Email",
-            "is_active": 1,
-            "price": 0.0,
-            "billing_interval": "Monthly"
+            "billing_interval": "Monthly",
+            "is_active": 1
         })
         plan.insert(ignore_permissions=True)
         frappe.db.commit()
@@ -33,7 +26,7 @@ def create_trial_plan():
             print("INFO: 'Trial' CRM Plan already exists and is active.")
 
     doc = frappe.get_doc("CRM Plan", "Trial")
-    print(f"PLAN_STATUS: name={doc.name}, is_active={doc.is_active}, monthly_price_per_user={doc.monthly_price_per_user}, max_users={doc.max_users}")
+    print(f"PLAN_STATUS: name={doc.name}, is_active={doc.is_active}, monthly_price_per_user={doc.monthly_price_per_user}")
     return doc.as_dict()
 
 def execute():
