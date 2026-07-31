@@ -8,13 +8,6 @@
  "field_order": [
   "plan_name",
   "monthly_price_per_user",
-  "included_users",
-  "max_users",
-  "max_records",
-  "max_storage_mb",
-  "feature_flags",
-  "support_level",
-  "price",
   "billing_interval",
   "is_active"
  ],
@@ -33,50 +26,12 @@
    "reqd": 1
   },
   {
-   "fieldname": "included_users",
-   "fieldtype": "Int",
-   "label": "Included Users"
-  },
-  {
-   "fieldname": "max_users",
-   "fieldtype": "Int",
-   "label": "Max Users"
-  },
-  {
-   "fieldname": "max_records",
-   "fieldtype": "Int",
-   "label": "Max Records"
-  },
-  {
-   "fieldname": "max_storage_mb",
-   "fieldtype": "Int",
-   "label": "Max Storage MB"
-  },
-  {
-   "fieldname": "feature_flags",
-   "fieldtype": "Table",
-   "label": "Feature Flags",
-   "options": "CRM Feature Flag"
-  },
-  {
-   "default": "Email",
-   "fieldname": "support_level",
-   "fieldtype": "Select",
-   "label": "Support Level",
-   "options": "Email\nChat\nPriority",
-   "reqd": 1
-  },
-  {
-   "fieldname": "price",
-   "fieldtype": "Currency",
-   "label": "Price (Legacy)"
-  },
-  {
    "default": "Monthly",
    "fieldname": "billing_interval",
    "fieldtype": "Select",
-   "label": "Billing Interval (Legacy)",
-   "options": "Monthly\nYearly"
+   "label": "Billing Interval",
+   "options": "Monthly\nYearly",
+   "reqd": 1
   },
   {
    "default": "1",
@@ -87,7 +42,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-07-24 12:00:00.000000",
+ "modified": "2026-07-30 13:15:00.000000",
  "modified_by": "Administrator",
  "module": "crm_saas",
  "name": "CRM Plan",
